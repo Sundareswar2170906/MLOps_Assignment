@@ -1,14 +1,13 @@
 
-from pathlib import Path
 
 import pandas as pd
 from fastapi.testclient import TestClient
 from joblib import dump
 from sklearn.linear_model import LogisticRegression
 
+from src import api
 from src.data import load_and_clean_data
 from src.train import build_pipeline
-import src.api as api
 
 
 def test_dataset_has_binary_target():

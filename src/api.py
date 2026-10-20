@@ -1,14 +1,14 @@
 
-from pathlib import Path
 import json
 import logging
+from pathlib import Path
 from time import perf_counter
 
 import pandas as pd
 from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel, Field
 from joblib import load
 from prometheus_client import Counter, Histogram, make_asgi_app
+from pydantic import BaseModel, Field
 
 ROOT = Path(__file__).resolve().parents[1]
 MODEL_PATH = ROOT / "models" / "heart_disease_pipeline.joblib"
