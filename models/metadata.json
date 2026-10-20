@@ -1,0 +1,21 @@
+{
+  "selected_model": "LogisticRegression",
+  "features": [
+    "age",
+    "sex",
+    "cp",
+    "trestbps",
+    "chol",
+    "fbs",
+    "restecg",
+    "thalach",
+    "exang",
+    "oldpeak",
+    "slope",
+    "ca",
+    "thal"
+  ],
+  "target_definition": "num == 0: 0; num > 0: 1",
+  "random_state": 42,
+  "test_size": 0.2
+}

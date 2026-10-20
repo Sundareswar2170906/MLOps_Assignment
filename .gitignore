@@ -1,0 +1,15 @@
+
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.env
+mlruns/
+.DS_Store
+
+# Generated dataset and local model artifacts
+data/*.csv
+models/*.joblib
+
+# Keep metadata, reports and screenshots for submission.

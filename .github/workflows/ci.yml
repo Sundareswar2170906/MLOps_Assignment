@@ -1,0 +1,48 @@
+
+name: Heart Disease MLOps CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test-and-train:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Lint code
+        run: ruff check src tests
+
+      - name: Download and prepare dataset
+        run: python -m src.data
+
+      - name: Run unit tests
+        run: pytest -v
+
+      - name: Train models
+        run: python -m src.train
+
+      - name: Upload training artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: training-artifacts
+          path: |
+            reports/
+            screenshots/
+            models/metadata.json
+          if-no-files-found: warn
